@@ -22,13 +22,13 @@ public:
 	
 	}
 
-	void transform_file(const wchar_t* file_name1, const wchar_t* file_name2) {
+	void transform_file(const char* file_name1, const char* file_name2) {
 	
 		file1.create_file();
 		file2.create_file();
 
-		file2.set_format_and_font(8, L"Century Gothic");
-		file2.create_sheet(L"New");
+		file2.set_format_and_font(8, "Century Gothic");
+		file2.create_sheet("New");
 
 		file1.open_file(file_name1);
 		modification();

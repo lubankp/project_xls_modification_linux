@@ -25,16 +25,16 @@ public:
 		
 	}
 
-	void create_sheet(const wchar_t* sheet_name) {
+	void create_sheet(const char* sheet_name) {
 		sheet = book->addSheet(sheet_name);
 		
 	}
 
-	void open_file(const wchar_t* file_name) {
+	void open_file(const char* file_name) {
 
 		try {
 			
-			book->load(L"file.xls");
+			book->load(file_name);
 			sheet = book->getSheet(0);
 		}
 		catch (const std::exception& e) {
@@ -43,7 +43,7 @@ public:
 		}
 	}
 
-	void save_file(const wchar_t* file_name) {
+	void save_file(const char* file_name) {
 	
 		book->save(file_name);
 	}
@@ -54,14 +54,14 @@ public:
 		{
 			for (int col = sheet->firstCol(); col < sheet->lastCol(); ++col)
 			{
-				std::wstring ws(sheet->readStr(row, col));
-				std::string str(ws.begin(), ws.end());
+				std::string str = sheet->readStr(row, col);
+			
 				std::cout << "(" << row << ", " << col << ") = " << str << std::endl;
 			}
 		}
 	}
 
-	void set_format_and_font(int size, const wchar_t* font_name) {
+	void set_format_and_font(int size, const char* font_name) {
 
 		libxl::Font* textFont = book->addFont();
 		textFont->setSize(8);
@@ -71,15 +71,15 @@ public:
 		
 	}
 
-	void write_string(int col, int row, const wchar_t* string) {
+	void write_string(int col, int row, const char* string) {
 	
 		sheet->writeStr(col, row, string);
 
 	}
 
-	const wchar_t* read_string(int col, int row) {
+	const char* read_string(int col, int row) {
 
-		const wchar_t* string = sheet->readStr(col, row);
+		const char* string = sheet->readStr(col, row);
 
 		return string;
 	}

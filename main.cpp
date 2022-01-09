@@ -5,6 +5,6 @@
 int main() {
 
 	Transformation transform;
-	transform.transform_file(L"file.xls", L"file1.xls");
+	transform.transform_file("file.xls", "file1.xls");
 	
 }
